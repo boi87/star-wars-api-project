@@ -16,11 +16,11 @@ export class CockpitComponent implements OnInit {
 
   }
 
-  onClickGetData() {
-    // this.apiService.getData().subscribe(x => {
-    //   console.log(x);
-    //   this.data = x;
-    // })
+  onGetData() {
+    this.apiService.getData().subscribe(x => {
+      console.log(x);
+      this.data = x;
+    })
   }
 
 }
