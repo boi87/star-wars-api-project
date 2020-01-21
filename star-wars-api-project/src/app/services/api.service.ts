@@ -9,9 +9,9 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getData() {
-    const baseUrl = 'https://swapi.co/api/';
-    return this.http.get(baseUrl);
+  getData(url: string) {
+
+    return this.http.get(url);
   }
 
 }

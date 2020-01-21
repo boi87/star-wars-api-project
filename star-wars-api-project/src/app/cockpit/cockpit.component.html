@@ -1,14 +1,44 @@
-<div style="display: flex;">
+<div style="margin: auto;">
+  <div style="display: flex; justify-content: center">
+    <div class="dropdown">
+      <button
+        class="btn btn-info dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+        style="margin-right: 10px;"
+      >
+        {{ fightMode ? fightMode : "Fight Mode" }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a
+          class="dropdown-item"
+          *ngFor="let mode of fightModes"
+          (click)="onSelectFightMode(mode)"
+          href="#"
+          >{{ mode }}</a
+        >
+      </div>
+      <button type="button" class="btn btn-warning" (click)="onNewGame()">
+        NEW GAME
+      </button>
+    
+  </div>
+  </div>
+</div>
+<div style="display: flex; margin-top: 20px;">
   <div class="container-md" style="display: flex; flex-direction: column">
-    First
-    <button type="button" class="btn btn-primary" (click)="onGetData()">
+    PLAYER 1
+    <button type="button" class="btn btn-primary" (click)="onGetLucky()">
       GET LUCKY
     </button>
   </div>
 
   <div class="container-md" style="display: flex; flex-direction: column">
-    Second
-    <button type="button" class="btn btn-primary" (click)="onGetData()">
+    PLAYER 2
+    <button type="button" class="btn btn-primary" (click)="onGetLucky()">
       GET LUCKY
     </button>
   </div>

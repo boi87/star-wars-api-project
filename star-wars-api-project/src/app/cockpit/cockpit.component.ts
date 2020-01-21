@@ -8,19 +8,39 @@ import {ApiService} from '../services/api.service';
 })
 export class CockpitComponent implements OnInit {
 
+  fightModes: string[];
+  fightMode:  string;
   constructor(private apiService: ApiService) { }
 
   data: any;
 
   ngOnInit() {
-
+    this.fightModes = ['Mass VS Crew', 'Height VS length'];
   }
 
+  onNewGame() {
+    console.log('newgame');
+  }
+
+  onSelectFightMode(event) {
+    console.log(event);
+    this.fightMode = event;
+  }
+
+  onGetLucky() {
+
+  }
   onGetData() {
-    this.apiService.getData().subscribe(x => {
+    const baseUrl = 'https://swapi.co/api/';
+
+
+
+    this.apiService.getData(url).subscribe(x => {
       console.log(x);
       this.data = x;
     })
   }
+
+
 
 }
