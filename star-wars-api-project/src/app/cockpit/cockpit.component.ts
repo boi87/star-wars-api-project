@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../services/api.service';
+import {PeopleScore, StarshipScore} from '../models/models';
 
 @Component({
   selector: 'app-cockpit',
@@ -9,10 +10,14 @@ import {ApiService} from '../services/api.service';
 export class CockpitComponent implements OnInit {
 
   fightModes: string[];
-  fightMode:  string;
-  constructor(private apiService: ApiService) { }
+  fightMode: string;
 
-  data: any;
+  constructor(private apiService: ApiService) {
+  }
+
+  loading: boolean;
+  player1Score: PeopleScore | StarshipScore;
+  player2Score: PeopleScore | StarshipScore;
 
   ngOnInit() {
     this.fightModes = ['Mass VS Crew', 'Height VS length'];
@@ -28,19 +33,25 @@ export class CockpitComponent implements OnInit {
   }
 
   onGetLucky() {
+    this.loading = true;
+    this.apiService.getData().subscribe((data: (PeopleScore | StarshipScore)[]) => {
+      const randomNum = Math.floor(Math.random() * 2);
 
-  }
-  onGetData() {
-    const baseUrl = 'https://swapi.co/api/';
+      if (data && data.length) {
+        this.loading = false;
+
+        this.player1Score = data[randomNum];
+        this.player2Score = data[randomNum === 0 ? 1 : 0];
+
+        console.log(this.player2Score);
+        console.log(this.player1Score);
 
 
-
-    this.apiService.getData(url).subscribe(x => {
-      console.log(x);
-      this.data = x;
+      }
+      console.log(data);
+      // this.data = x;
     })
   }
-
 
 
 }

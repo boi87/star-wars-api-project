@@ -24,22 +24,45 @@
       <button type="button" class="btn btn-warning" (click)="onNewGame()">
         NEW GAME
       </button>
-    
-  </div>
+    </div>
   </div>
 </div>
-<div style="display: flex; margin-top: 20px;">
-  <div class="container-md" style="display: flex; flex-direction: column">
-    PLAYER 1
-    <button type="button" class="btn btn-primary" (click)="onGetLucky()">
-      GET LUCKY
-    </button>
+<button
+  style="margin: auto; margin: 20px 0 20px 0;"
+  type="button"
+  class="btn btn-primary"
+  [disabled]="!fightMode && loading"
+  (click)="onGetLucky()"
+>
+  GET LUCKY
+</button>
+<!--    <button type="button" class="btn btn-primary" (click)="onGetLucky()">-->
+<!--      GET LUCKY-->
+<!--    </button>-->
+<div class="cards-container">
+  <div id="p1Container">
+    <div class="container-md" style="display: flex; flex-direction: column">
+      PLAYER 1
+    </div>
+    <div class="card">
+      <div class="card-body">
+        This is some text within a card body.
+      </div>
+    </div>
   </div>
 
-  <div class="container-md" style="display: flex; flex-direction: column">
-    PLAYER 2
-    <button type="button" class="btn btn-primary" (click)="onGetLucky()">
-      GET LUCKY
-    </button>
+  <div *ngIf="loading" style="width: 10rem" class="spinner-grow text-primary">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <div id="p2Container">
+    <div class="container-md" style="display: flex; flex-direction: column">
+      PLAYER 2
+    </div>
+    <div class="card">
+      <div class="card-body">
+        This is some text within a card body.
+      </div>
+    </div>
   </div>
 </div>
