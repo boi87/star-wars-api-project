@@ -68,7 +68,7 @@
     <div class="card">
       <div class="card-body" *ngIf="starshipsData?.results?.length">
         <div *ngFor="let item of starshipsData?.results;">
-          <p>Name: {{ item.name }}</p>
+          <p>Name: {{ item[1].name }}</p>
         </div>
       </div>
     </div>
