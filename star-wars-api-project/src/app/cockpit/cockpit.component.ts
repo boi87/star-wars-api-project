@@ -25,9 +25,7 @@ export class CockpitComponent implements OnInit {
   peopleData: PeopleData;
   starshipsData: StarshipData;
 
-  person: any[] = [];
-  starship: any[] = [];
-
+  randomItem = Math.floor(Math.random() * 9);
   p1Score: number;
   p2Score: number;
 
@@ -56,13 +54,10 @@ export class CockpitComponent implements OnInit {
 
   getPeopleResults() {
     this.apiService.getPeople().subscribe((data: any) => {
-      const randomNum = Math.floor(Math.random() * 9);
 
       if (data) {
         this.loadingPeople = false;
-        this.peopleData = data;
-
-
+        this.peopleData = data['results'];
 
       }
       console.log("peopleData", this.peopleData);
@@ -71,12 +66,11 @@ export class CockpitComponent implements OnInit {
 
   getStarshipResult() {
     this.apiService.getStarship().subscribe((data: any) => {
-      const randomNum = Math.floor(Math.random() * 9);
 
       if (data) {
         this.loadingStarship = false;
 
-        this.starshipsData = data;
+        this.starshipsData = data['results'];
       }
 
       console.log("starshipsData", this.starshipsData);

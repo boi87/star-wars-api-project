@@ -45,9 +45,9 @@
       PEOPLE
     </div>
     <div class="card">
-      <div class="card-body">
-        <div *ngFor="let item of person">
-          <p>{{ item }}</p>
+      <div class="card-body" *ngIf="peopleData?.results?.length">
+        <div *ngFor="let item of peopleData?.results">
+          <p>Name: {{ item.name }}</p>
         </div>
       </div>
     </div>
@@ -66,9 +66,9 @@
       STARSHIPS
     </div>
     <div class="card">
-      <div class="card-body">
-        <div *ngFor="let item of starship">
-          <p>{{ item }}</p>
+      <div class="card-body" *ngIf="starshipsData?.results?.length">
+        <div *ngFor="let item of starshipsData?.results;">
+          <p>Name: {{ item.name }}</p>
         </div>
       </div>
     </div>
