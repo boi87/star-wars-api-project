@@ -54,7 +54,7 @@ export class CockpitComponent implements OnInit {
 
     console.log(this.person && this.starship);
 
-    
+
     if (this.person && this.starship) {
       console.log('hello');
     }
@@ -74,6 +74,7 @@ export class CockpitComponent implements OnInit {
           ];
       }
       console.log("person", this.person);
+      this.onFight();
     });
   }
 
@@ -91,8 +92,17 @@ export class CockpitComponent implements OnInit {
               : data["results"].length - 1
           ];
       }
-
       console.log("starship", this.starship);
+      this.onFight();
+
     });
+  }
+
+  onFight() {
+    if (this.person && this.starship) {
+      console.log('here');
+    }
+    this.person = null;
+    this.starship = null;
   }
 }
