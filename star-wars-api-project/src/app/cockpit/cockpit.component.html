@@ -46,14 +46,12 @@
     </div>
     <div class="card">
       <div class="card-body" *ngIf="peopleResults">
-        <div *ngFor="let item of peopleResults">
-          <p>Name: {{ item.name }}</p>
-          <p>Heigth: {{ item.height }}</p>
-          <p>Mass: {{ item.mass }}</p>
-          <p>Hair Color: {{ item.hair_color }}</p>
-          <p>Skin Color: {{ item.skin_color }}</p>
-          <p>Eye Color: {{ item.eye_color }}</p>
-        </div>
+          <p>Name: {{ peopleResults[randomItem]?.name }}</p>
+          <p>Heigth: {{ peopleResults[randomItem]?.height }}</p>
+          <p>Mass: {{ peopleResults[randomItem]?.mass }}</p>
+          <p>Hair Color: {{ peopleResults[randomItem]?.hair_color }}</p>
+          <p>Skin Color: {{ peopleResults[randomItem]?.skin_color }}</p>
+          <p>Eye Color: {{ peopleResults[randomItem]?.eye_color }}</p>
       </div>
     </div>
   </div>
@@ -72,14 +70,14 @@
     </div>
     <div class="card">
       <div class="card-body" *ngIf="starshipsResults">
-        <div *ngFor="let item of starshipsResults">
-          <p>Name: {{ item.name }}</p>
-          <p>Model: {{ item.model }}</p>
-          <p>Manufacturer: {{ item.manufacturer }}</p>
-          <p>Cost in credits: {{ item.cost_in_credits }}</p>
-          <p>Length: {{ item.length }}</p>
-          <p>Max atmosphering speed: {{ item.max_atmosphering_speed }}</p>
-        </div>
+<!--        <div *ngFor="let item of starshipsResults">-->
+          <p>Name: {{ starshipsResults[randomItem]?.name }}</p>
+          <p>Model: {{ starshipsResults[randomItem]?.model }}</p>
+          <p>Manufacturer: {{ starshipsResults[randomItem]?.manufacturer }}</p>
+          <p>Cost in credits: {{ starshipsResults[randomItem]?.cost_in_credits }}</p>
+          <p>Length: {{ starshipsResults[randomItem]?.length }}</p>
+          <p>Max atmosphering speed: {{ starshipsResults[randomItem]?.max_atmosphering_speed }}</p>
+<!--        </div>-->
       </div>
     </div>
   </div>
