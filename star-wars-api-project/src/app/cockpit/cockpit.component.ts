@@ -1,12 +1,12 @@
-import {Component, OnInit} from "@angular/core";
-import {ApiService} from "../services/api.service";
+import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
 import {
   PeopleData,
   PeopleResult,
   StarshipData,
   StarshipResult
 } from "../models/models";
-import {Observable} from 'rxjs';
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-cockpit",
@@ -17,8 +17,7 @@ export class CockpitComponent implements OnInit {
   fightModes: string[];
   fightMode: string;
 
-  constructor(private apiService: ApiService) {
-  }
+  constructor(private apiService: ApiService) {}
 
   loadingPeople: boolean;
   loadingStarship: boolean;
@@ -26,11 +25,10 @@ export class CockpitComponent implements OnInit {
   peopleObservable: Observable<any>;
   starshipsObservable: Observable<any>;
 
-  peopleResults: PeopleResult[];
-  starshipsResults: StarshipResult[];
+  person: PeopleResult;
+  starship: StarshipResult;
 
   randomItem = Math.floor(Math.random() * 9);
-
 
   p1Score: number;
   p2Score: number;
@@ -59,31 +57,38 @@ export class CockpitComponent implements OnInit {
   }
 
   getPeopleResults() {
-    this.peopleObservable = this.apiService.getPeople();
+    // this.peopleObservable = this.apiService.getPeople();
 
     this.apiService.getPeople().subscribe((data: PeopleData) => {
-
       if (data) {
         this.loadingPeople = false;
-        this.peopleResults = data['results'];
-
+        this.person =
+          data["results"][
+            this.randomItem < data["results"].length
+              ? this.randomItem
+              : data["results"].length - 1
+          ];
       }
-      console.log("peopleResults", this.peopleResults);
+      console.log("person", this.person);
     });
   }
 
   getStarshipResult() {
-    this.starshipsObservable = this.apiService.getStarship();
+    // this.starshipsObservable = this.apiService.getStarship();
 
     this.apiService.getStarship().subscribe((data: StarshipData) => {
-
       if (data) {
         this.loadingStarship = false;
 
-        this.starshipsResults = data['results'];
+        this.starship =
+          data["results"][
+            this.randomItem < data["results"].length
+              ? this.randomItem
+              : data["results"].length - 1
+          ];
       }
 
-      console.log("starshipsResults", this.starshipsResults);
+      console.log("starship", this.starship);
     });
   }
 }
