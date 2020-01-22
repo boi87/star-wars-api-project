@@ -6,6 +6,7 @@ import {
   StarshipData,
   StarshipResult
 } from "../models/models";
+import {Observable} from 'rxjs';
 
 @Component({
   selector: "app-cockpit",
@@ -22,10 +23,15 @@ export class CockpitComponent implements OnInit {
   loadingPeople: boolean;
   loadingStarship: boolean;
 
-  peopleData: PeopleData;
-  starshipsData: StarshipData;
+  peopleObservable: Observable<any>;
+  starshipsObservable: Observable<any>;
+
+  peopleResults: PeopleResult[];
+  starshipsResults: StarshipResult[];
 
   randomItem = Math.floor(Math.random() * 9);
+
+
   p1Score: number;
   p2Score: number;
 
@@ -53,27 +59,31 @@ export class CockpitComponent implements OnInit {
   }
 
   getPeopleResults() {
-    this.apiService.getPeople().subscribe((data: any) => {
+    this.peopleObservable = this.apiService.getPeople();
+
+    this.apiService.getPeople().subscribe((data: PeopleData) => {
 
       if (data) {
         this.loadingPeople = false;
-        this.peopleData = data['results'];
+        this.peopleResults = data['results'];
 
       }
-      console.log("peopleData", this.peopleData);
+      console.log("peopleResults", this.peopleResults);
     });
   }
 
   getStarshipResult() {
-    this.apiService.getStarship().subscribe((data: any) => {
+    this.starshipsObservable = this.apiService.getStarship();
+
+    this.apiService.getStarship().subscribe((data: StarshipData) => {
 
       if (data) {
         this.loadingStarship = false;
 
-        this.starshipsData = data['results'];
+        this.starshipsResults = data['results'];
       }
 
-      console.log("starshipsData", this.starshipsData);
+      console.log("starshipsResults", this.starshipsResults);
     });
   }
 }
