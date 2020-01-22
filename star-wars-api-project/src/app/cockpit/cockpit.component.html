@@ -18,7 +18,7 @@
           *ngFor="let mode of fightModes"
           (click)="onSelectFightMode(mode)"
           href="#"
-          >{{ mode }}</a
+        >{{ mode }}</a
         >
       </div>
       <button type="button" class="btn btn-warning" (click)="onNewGame()">
@@ -42,16 +42,18 @@
 <div class="cards-container">
   <div id="p1Container">
     <div class="container-md" style="display: flex; flex-direction: column">
-      PEOPLE
+      <span>
+      YOUR PERSON
+      </span>
     </div>
     <div class="card">
-      <div class="card-body" *ngIf="peopleResults">
-          <p>Name: {{ peopleResults[randomItem]?.name }}</p>
-          <p>Heigth: {{ peopleResults[randomItem]?.height }}</p>
-          <p>Mass: {{ peopleResults[randomItem]?.mass }}</p>
-          <p>Hair Color: {{ peopleResults[randomItem]?.hair_color }}</p>
-          <p>Skin Color: {{ peopleResults[randomItem]?.skin_color }}</p>
-          <p>Eye Color: {{ peopleResults[randomItem]?.eye_color }}</p>
+      <div class="card-body" *ngIf="person">
+        <p>Name: {{ person.name }}</p>
+        <p>Heigth: {{ person.height }}</p>
+        <p>Mass: {{ person.mass }}</p>
+        <p>Hair Color: {{ person.hair_color }}</p>
+        <p>Skin Color: {{ person.skin_color }}</p>
+        <p>Eye Color: {{ person.eye_color }}</p>
       </div>
     </div>
   </div>
@@ -66,18 +68,18 @@
 
   <div id="p2Container">
     <div class="container-md" style="display: flex; flex-direction: column">
-      STARSHIPS
+      YOUR STARSHIP
     </div>
     <div class="card">
-      <div class="card-body" *ngIf="starshipsResults">
-<!--        <div *ngFor="let item of starshipsResults">-->
-          <p>Name: {{ starshipsResults[randomItem]?.name }}</p>
-          <p>Model: {{ starshipsResults[randomItem]?.model }}</p>
-          <p>Manufacturer: {{ starshipsResults[randomItem]?.manufacturer }}</p>
-          <p>Cost in credits: {{ starshipsResults[randomItem]?.cost_in_credits }}</p>
-          <p>Length: {{ starshipsResults[randomItem]?.length }}</p>
-          <p>Max atmosphering speed: {{ starshipsResults[randomItem]?.max_atmosphering_speed }}</p>
-<!--        </div>-->
+      <div class="card-body" *ngIf="starship">
+        <!--        <div *ngFor="let item of starshipsResults">-->
+        <p>Name: {{ starship.name }}</p>
+        <p>Model: {{ starship.model }}</p>
+        <p>Manufacturer: {{ starship.manufacturer }}</p>
+        <p>Cost in credits: {{ starship.cost_in_credits }}</p>
+        <p>Length: {{ starship.length }}</p>
+        <p>Max atmosphering speed: {{ starship.max_atmosphering_speed }}</p>
+        <!--        </div>-->
       </div>
     </div>
   </div>
