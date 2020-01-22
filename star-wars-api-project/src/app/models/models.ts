@@ -1,4 +1,18 @@
-export interface PeopleScore {
+export interface PeopleData {
+  count: number;
+  next: string;
+  previous: string;
+  results: PeopleResult[];
+}
+
+export interface StarshipData {
+  count: number;
+  next: string;
+  previous: string;
+  results: StarshipResult[];
+}
+
+export interface PeopleResult {
   name: string;
   height: string;
   mass: string;
@@ -17,7 +31,7 @@ export interface PeopleScore {
   url: string;
 }
 
-export interface StarshipScore {
+export interface StarshipResult {
   name: string;
   model: string;
   manufacturer: string;
@@ -36,4 +50,4 @@ export interface StarshipScore {
   created: string;
   edited: string;
   url: string;
-}
+}[]

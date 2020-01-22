@@ -31,7 +31,7 @@
   style="margin: auto; margin: 20px 0 20px 0;"
   type="button"
   class="btn btn-primary"
-  [disabled]="!fightMode && loading"
+  [disabled]="!fightMode && loadingPeople"
   (click)="onGetLucky()"
 >
   GET LUCKY
@@ -42,26 +42,34 @@
 <div class="cards-container">
   <div id="p1Container">
     <div class="container-md" style="display: flex; flex-direction: column">
-      PLAYER 1
+      PEOPLE
     </div>
     <div class="card">
       <div class="card-body">
-        This is some text within a card body.
+        <div *ngFor="let item of person">
+          <p>{{ item }}</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <div *ngIf="loading" style="width: 10rem" class="spinner-grow text-primary">
+  <div
+    *ngIf="loadingPeople && loadingStarship"
+    style="width: 10rem"
+    class="spinner-grow text-primary"
+  >
     <span class="sr-only">Loading...</span>
   </div>
 
   <div id="p2Container">
     <div class="container-md" style="display: flex; flex-direction: column">
-      PLAYER 2
+      STARSHIPS
     </div>
     <div class="card">
       <div class="card-body">
-        This is some text within a card body.
+        <div *ngFor="let item of starship">
+          <p>{{ item }}</p>
+        </div>
       </div>
     </div>
   </div>
