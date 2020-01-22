@@ -22,9 +22,6 @@ export class CockpitComponent implements OnInit {
   loadingPeople: boolean;
   loadingStarship: boolean;
 
-  peopleObservable: Observable<any>;
-  starshipsObservable: Observable<any>;
-
   person: PeopleResult;
   starship: StarshipResult;
 
@@ -54,6 +51,13 @@ export class CockpitComponent implements OnInit {
     this.loadingPeople = true;
     this.getPeopleResults();
     this.getStarshipResult();
+
+    console.log(this.person && this.starship);
+
+    
+    if (this.person && this.starship) {
+      console.log('hello');
+    }
   }
 
   getPeopleResults() {
