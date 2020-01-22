@@ -10,7 +10,7 @@
         aria-expanded="false"
         style="margin-right: 10px;"
       >
-        {{ fightMode ? fightMode : "Fight Mode" }}
+        {{ fightModeSelected ? fightModeSelected : "Fight Mode" }}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a
@@ -18,7 +18,7 @@
           *ngFor="let mode of fightModes"
           (click)="onSelectFightMode(mode)"
           href="#"
-        >{{ mode }}</a
+          >{{ mode }}</a
         >
       </div>
       <button type="button" class="btn btn-warning" (click)="onNewGame()">
@@ -31,26 +31,42 @@
   style="margin: auto; margin: 20px 0 20px 0;"
   type="button"
   class="btn btn-primary"
-  [disabled]="!fightMode && loadingPeople"
+  [disabled]="!fightModeSelected || loadingPeople || loadingStarship"
   (click)="onGetLucky()"
 >
   GET LUCKY
 </button>
-<!--    <button type="button" class="btn btn-primary" (click)="onGetLucky()">-->
-<!--      GET LUCKY-->
-<!--    </button>-->
+<div style="display: flex; justify-content: space-around;">
+  <div>P1 SCORE: {{ p1Score }}</div>
+  <div>P2 SCORE: {{ p2Score }}</div>
+</div>
+
 <div class="cards-container">
   <div id="p1Container">
     <div class="container-md" style="display: flex; flex-direction: column">
       <span>
-      YOUR PERSON
+        YOUR PERSON
       </span>
     </div>
     <div class="card">
       <div class="card-body" *ngIf="person">
         <p>Name: {{ person.name }}</p>
-        <p>Heigth: {{ person.height }}</p>
-        <p>Mass: {{ person.mass }}</p>
+        <p
+          [ngStyle]="{
+            'font-weight':
+              fightModeSelected === 'Height VS length' ? 'bold' : 'null'
+          }"
+        >
+          Heigth: {{ person.height }}
+        </p>
+        <p
+          [ngStyle]="{
+            'font-weight':
+              fightModeSelected === 'Mass VS Crew' ? 'bold' : 'null'
+          }"
+        >
+          Mass: {{ person.mass }}
+        </p>
         <p>Hair Color: {{ person.hair_color }}</p>
         <p>Skin Color: {{ person.skin_color }}</p>
         <p>Eye Color: {{ person.eye_color }}</p>
@@ -58,8 +74,12 @@
     </div>
   </div>
 
+  <div *ngIf="(p1Wins || p2Wins) && !loadingPeople && !loadingStarship">
+    Player {{ this.p1Wins ? "1" : "2" }} wins!!
+  </div>
+
   <div
-    *ngIf="loadingPeople && loadingStarship"
+    *ngIf="loadingPeople || loadingStarship"
     style="width: 10rem"
     class="spinner-grow text-primary"
   >
@@ -72,14 +92,26 @@
     </div>
     <div class="card">
       <div class="card-body" *ngIf="starship">
-        <!--        <div *ngFor="let item of starship">-->
         <p>Name: {{ starship.name }}</p>
         <p>Model: {{ starship.model }}</p>
         <p>Manufacturer: {{ starship.manufacturer }}</p>
-        <p>Cost in credits: {{ starship.cost_in_credits }}</p>
-        <p>Length: {{ starship.length }}</p>
+        <p
+          [ngStyle]="{
+            'font-weight':
+              fightModeSelected === 'Mass VS Crew' ? 'bold' : 'null'
+          }"
+        >
+          Crew: {{ starship.crew }}
+        </p>
+        <p
+          [ngStyle]="{
+            'font-weight':
+              fightModeSelected === 'Height VS length' ? 'bold' : 'null'
+          }"
+        >
+          Length: {{ starship.length }}
+        </p>
         <p>Max atmosphering speed: {{ starship.max_atmosphering_speed }}</p>
-        <!--        </div>-->
       </div>
     </div>
   </div>
