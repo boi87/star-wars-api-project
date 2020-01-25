@@ -18,7 +18,7 @@
           *ngFor="let mode of fightModes"
           (click)="onSelectFightMode(mode)"
           href="#"
-          >{{ mode }}</a
+        >{{ mode }}</a
         >
       </div>
       <button type="button" class="btn btn-warning" (click)="onNewGame()">
@@ -54,7 +54,7 @@
         <p
           [ngStyle]="{
             'font-weight':
-              fightModeSelected === 'Height VS length' ? 'bold' : 'null'
+              heightVsLength ? 'bold' : 'null'
           }"
         >
           Heigth: {{ person.height }}
@@ -62,7 +62,7 @@
         <p
           [ngStyle]="{
             'font-weight':
-              fightModeSelected === 'Mass VS Crew' ? 'bold' : 'null'
+              massVsCrew ? 'bold' : 'null'
           }"
         >
           Mass: {{ person.mass }}
@@ -98,7 +98,7 @@
         <p
           [ngStyle]="{
             'font-weight':
-              fightModeSelected === 'Mass VS Crew' ? 'bold' : 'null'
+              massVsCrew ? 'bold' : 'null'
           }"
         >
           Crew: {{ starship.crew }}
@@ -106,7 +106,7 @@
         <p
           [ngStyle]="{
             'font-weight':
-              fightModeSelected === 'Height VS length' ? 'bold' : 'null'
+              heightVsLength ? 'bold' : 'null'
           }"
         >
           Length: {{ starship.length }}

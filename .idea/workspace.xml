@@ -19,15 +19,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>logo</find>
-      <find>angula</find>
-      <find>starshipsResults</find>
-      <find>loadingStarship</find>
-      <find>selected</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -104,6 +95,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\boimi\AppData\Roaming\npm\node_modules\prettier" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2019.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
@@ -131,7 +123,7 @@
       <updated>1579553563704</updated>
       <workItem from="1579553569614" duration="13359000" />
       <workItem from="1579863873053" duration="1162000" />
-      <workItem from="1579943228681" duration="2751000" />
+      <workItem from="1579943228681" duration="4532000" />
     </task>
     <servers />
   </component>
