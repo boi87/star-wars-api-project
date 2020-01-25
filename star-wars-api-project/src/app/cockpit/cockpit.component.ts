@@ -66,8 +66,8 @@ export class CockpitComponent implements OnInit {
         break;
     }
 
-    console.log('massVsCrew', this.massVsCrew);
-    console.log('heightVsLength', this.heightVsLength);
+    // console.log('massVsCrew', this.massVsCrew);
+    // console.log('heightVsLength', this.heightVsLength);
     this.fightModeSelected = event;
   }
 
@@ -138,8 +138,8 @@ export class CockpitComponent implements OnInit {
     // this.person = null;
     // this.starship = null;
     //
-    // this.p1Wins = false;
-    // this.p2Wins = false;
+    this.p1Wins = false;
+    this.p2Wins = false;
 
     this.loadingPeople = false;
     this.loadingStarship = false;
