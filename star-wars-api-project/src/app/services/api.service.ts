@@ -18,8 +18,8 @@ export class ApiService {
     const randomStarshipsPage = Math.floor(Math.random() * 4) + 1;
     const starshipsUrl = `https://swapi.co/api/starships/?page=${randomStarshipsPage}`;
 
-    let peopleProm = this.http.get(peopleUrl);
-    let starshipProm = this.http.get(starshipsUrl);
+    const peopleProm = this.http.get(peopleUrl);
+    const starshipProm = this.http.get(starshipsUrl);
 
     return forkJoin([peopleProm, starshipProm])
 

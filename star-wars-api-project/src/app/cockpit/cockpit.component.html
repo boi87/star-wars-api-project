@@ -36,6 +36,7 @@
 >
   FIGHT
 </button>
+
 <div style="display: flex; justify-content: space-around;">
   <div>P1 SCORE: {{ p1Score }}</div>
   <div>P2 SCORE: {{ p2Score }}</div>
@@ -53,16 +54,16 @@
         <p>Name: {{ person.name }}</p>
         <p
           [ngStyle]="{
-            'font-weight':
-              heightVsLength ? 'bold' : 'null'
+            'background-color':
+              heightVsLength ? 'yellow' : 'transparent'
           }"
         >
           Heigth: {{ person.height }}
         </p>
         <p
           [ngStyle]="{
-            'font-weight':
-              massVsCrew ? 'bold' : 'null'
+            'background-color':
+              massVsCrew ? 'yellow' : 'transparent'
           }"
         >
           Mass: {{ person.mass }}
@@ -74,7 +75,7 @@
     </div>
   </div>
 
-  <div *ngIf="(p1Wins || p2Wins) && !loadingPeople && !loadingStarship">
+  <div style="font-weight: bold" *ngIf="(p1Wins || p2Wins) && !loadingPeople && !loadingStarship">
     Player {{ this.p1Wins ? "1" : "2" }} wins!!
   </div>
 
@@ -97,16 +98,16 @@
         <p>Manufacturer: {{ starship.manufacturer }}</p>
         <p
           [ngStyle]="{
-            'font-weight':
-              massVsCrew ? 'bold' : 'null'
+            'background-color':
+              heightVsLength ? 'yellow' : 'transparent'
           }"
         >
           Crew: {{ starship.crew }}
         </p>
         <p
           [ngStyle]="{
-            'font-weight':
-              heightVsLength ? 'bold' : 'null'
+            'background-color':
+              massVsCrew ? 'yellow' : 'transparent'
           }"
         >
           Length: {{ starship.length }}
