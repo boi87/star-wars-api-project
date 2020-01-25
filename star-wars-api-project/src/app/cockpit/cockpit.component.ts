@@ -49,6 +49,9 @@ export class CockpitComponent implements OnInit {
   onNewGame() {
     this.p1Score = 0;
     this.p2Score = 0;
+    this.fightModeSelected = null;
+    this.heightVsLength = false;
+    this.massVsCrew = false;
   }
 
   onSelectFightMode(event) {
@@ -71,11 +74,12 @@ export class CockpitComponent implements OnInit {
   onGetData() {
     this.person = null;
     this.starship = null;
+
     this.p1Wins = false;
     this.p2Wins = false;
+
     this.loadingPeople = true;
     this.loadingStarship = true;
-
 
     this.apiService.getData().subscribe((data: any) => {
 
@@ -101,46 +105,38 @@ export class CockpitComponent implements OnInit {
 
     if ((this.massVsCrew)) {
       if (this.person.mass === 'unknown' || this.starship.crew === 'unknown') {
+        console.log('UNK');
         this.onGetData();
       } else {
-        console.log('mass', this.person.mass);
-        console.log('crew', this.starship.crew);
+
+        // console.log(this.person.mass);
+        // console.log(this.starship.crew);
         if (+this.person.mass > +this.starship.crew) {
           this.p1Wins = true;
           this.p1Score += 1;
-          // this.fighting = false;
         } else {
           this.p2Wins = true;
           this.p2Score += 1;
-          // this.fighting = false;
         }
       }
     } else {
       if (this.person.height === 'unknown' || this.starship.length === 'unknown') {
+        console.log('UNK');
         this.onGetData();
       } else {
-        console.log('height', this.person.height);
-        console.log('length', this.starship.length);
-
+        // console.log(this.person.height);
+        // console.log(this.starship.length);
         if (+this.person.height > +this.starship.length) {
           console.log(+this.person.height > +this.starship.length);
           this.p1Wins = true;
           this.p1Score += 1;
-          // this.fighting = false;
         } else {
           this.p2Wins = true;
           this.p2Score += 1;
-          // this.fighting = false;
         }
       }
-
     }
-    console.log('p1Wins', this.p1Wins);
-    console.log('p2Wins', this.p2Wins);
     this.loadingPeople = false;
     this.loadingStarship = false;
-
-    // console.log(this.p1Score);
-    // console.log(this.p2Score);
   }
 }
