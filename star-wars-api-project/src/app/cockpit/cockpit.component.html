@@ -31,10 +31,10 @@
   style="margin: auto; margin: 20px 0 20px 0;"
   type="button"
   class="btn btn-primary"
-  (click)="onGetLucky()"
+  (click)="onGetData()"
+  [disabled]="!fightModeSelected || loadingPeople || loadingStarship"
 >
-<!--  [disabled]="!fightModeSelected || loadingPeople || loadingStarship"-->
-  GET LUCKY
+  FIGHT
 </button>
 <div style="display: flex; justify-content: space-around;">
   <div>P1 SCORE: {{ p1Score }}</div>

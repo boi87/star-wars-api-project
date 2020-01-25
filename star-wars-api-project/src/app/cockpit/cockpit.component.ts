@@ -28,7 +28,7 @@ export class CockpitComponent implements OnInit {
   person: Person;
   starship: Starship;
 
-  randomItem = Math.floor(Math.random() * 9);
+  // randomItem = Math.floor(Math.random() * 9);
 
   p1Wins = false;
   p2Wins = false;
@@ -51,7 +51,7 @@ export class CockpitComponent implements OnInit {
 
     this.p1Wins = false;
     this.p2Wins = false;
-    this.onGetLucky();
+    this.onGetData();
   }
 
   onNewGame() {
@@ -66,33 +66,30 @@ export class CockpitComponent implements OnInit {
     this.fightModeSelected = event;
   }
 
-  onGetLucky() {
+  onGetData() {
     this.loadingPeople = true;
     this.loadingStarship = true;
-    // this.getPeopleResults();
-    // this.getStarshipResult();
+
+
     this.apiService.getData().subscribe((data: any) => {
 
       this.peopleData = data[0];
       this.starshipData = data[1];
 
       this.person = this.peopleData["results"][
-        this.randomItem < this.peopleData["results"].length
-          ? this.randomItem
-          : this.peopleData["results"].length - 1
+        Math.floor(Math.random() * this.peopleData["results"].length)
         ];
 
       // console.log("person", this.person);
 
       this.starship = this.starshipData["results"][
-        this.randomItem < this.starshipData["results"].length
-          ? this.randomItem
-          : this.starshipData["results"].length - 1
+        Math.floor(Math.random() * this.starshipData["results"].length)
         ];
 
-      console.log(this.person);
-      console.log(this.starship);
+      console.log('person', this.person);
+      console.log('starship', this.starship);
 
+      this.onFight();
     });
 
   }
@@ -100,51 +97,74 @@ export class CockpitComponent implements OnInit {
   onFight() {
     console.log(this.fightModeSelected);
 
-    // this.fighting = true;
-    if (this.person && this.starship) {
-      if (this.fightModeSelected === "Mass VS Crew") {
-        if (
-          this.person.mass !== undefined &&
-          this.starship.crew !== undefined
-        ) {
-          if (this.person.mass > this.starship.crew) {
-            this.p1Wins = true;
-            this.p1Score += 1;
-            // this.fighting = false;
-          } else {
-            this.p2Wins = true;
-            this.p2Score += 1;
-            // this.fighting = false;
-          }
-        } else {
-          this.newMatch();
-        }
-      } else {
-        if (
-          this.person.height !== undefined &&
-          this.starship.length !== undefined
-        ) {
-          if (this.person.height > this.starship.length) {
-            console.log(this.person.height);
-            console.log(this.starship.length);
-            console.log(this.person.height > this.starship.length);
+    if ((this.fightModeSelected === "Mass VS Crew")) {
+      if (this.person.mass === 'unknown' || this.starship.crew === 'unknown') {
+        this.onGetData();
 
-            this.p1Wins = true;
-            this.p1Score += 1;
-            // this.fighting = false;
-          } else {
-            this.p2Wins = true;
-            this.p2Score += 1;
-            // this.fighting = false;
-          }
-        } else {
-          this.newMatch();
-        }
+
+      } else {
+        console.log('mass', this.person.mass);
+        console.log('crew', this.starship.crew);
       }
     } else {
-      this.newMatch();
+      if (this.person.height === 'unknown' || this.starship.length === 'unknown') {
+        this.onGetData();
+
+
+      } else {
+
+        console.log('height', this.person.height);
+        console.log('length', this.starship.length);
+      }
+
     }
 
+
+    //   if (this.fightModeSelected === "Mass VS Crew") {
+    //     if (
+    //       this.person.mass !== undefined &&
+    //       this.starship.crew !== undefined
+    //     ) {
+    //       if (this.person.mass > this.starship.crew) {
+    //         this.p1Wins = true;
+    //         this.p1Score += 1;
+    //         // this.fighting = false;
+    //       } else {
+    //         this.p2Wins = true;
+    //         this.p2Score += 1;
+    //         // this.fighting = false;
+    //       }
+    //     } else {
+    //       this.newMatch();
+    //     }
+    //   } else {
+    //     if (
+    //       this.person.height !== undefined &&
+    //       this.starship.length !== undefined
+    //     ) {
+    //       if (this.person.height > this.starship.length) {
+    //         console.log(this.person.height);
+    //         console.log(this.starship.length);
+    //         console.log(this.person.height > this.starship.length);
+    //
+    //         this.p1Wins = true;
+    //         this.p1Score += 1;
+    //         // this.fighting = false;
+    //       } else {
+    //         this.p2Wins = true;
+    //         this.p2Score += 1;
+    //         // this.fighting = false;
+    //       }
+    //     } else {
+    //       this.newMatch();
+    //     }
+    //   }
+    // } else {
+    //   this.newMatch();
+    // }
+
+    this.loadingPeople = false;
+    this.loadingStarship = false;
     // console.log(this.p1Score);
     // console.log(this.p2Score);
   }
