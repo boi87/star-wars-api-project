@@ -1,11 +1,11 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable, forkJoin} from 'rxjs';
 
 // import * as q from ''
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class ApiService {
   constructor(private http: HttpClient) {
@@ -21,7 +21,7 @@ export class ApiService {
     const peopleProm = this.http.get(peopleUrl);
     const starshipProm = this.http.get(starshipsUrl);
 
-    return forkJoin([peopleProm, starshipProm])
+    return forkJoin([peopleProm, starshipProm]);
 
   }
 }
