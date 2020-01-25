@@ -2,17 +2,17 @@ export interface PeopleData {
   count: number;
   next: string;
   previous: string;
-  results: PeopleResult[];
+  results: Person[];
 }
 
 export interface StarshipData {
   count: number;
   next: string;
   previous: string;
-  results: StarshipResult[];
+  results: Starship[];
 }
 
-export interface PeopleResult {
+export interface Person {
   name: string;
   height: string;
   mass: string;
@@ -31,7 +31,7 @@ export interface PeopleResult {
   url: string;
 }
 
-export interface StarshipResult {
+export interface Starship {
   name: string;
   model: string;
   manufacturer: string;

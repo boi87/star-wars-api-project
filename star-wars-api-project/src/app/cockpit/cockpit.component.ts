@@ -2,9 +2,9 @@ import {Component, OnInit} from "@angular/core";
 import {ApiService} from "../services/api.service";
 import {
   PeopleData,
-  PeopleResult,
+  Person,
   StarshipData,
-  StarshipResult
+  Starship
 } from "../models/models";
 
 @Component({
@@ -22,8 +22,11 @@ export class CockpitComponent implements OnInit {
   loadingPeople: boolean;
   loadingStarship: boolean;
 
-  person: PeopleResult;
-  starship: StarshipResult;
+  peopleData: PeopleData;
+  starshipData: StarshipData;
+
+  person: Person;
+  starship: Starship;
 
   randomItem = Math.floor(Math.random() * 9);
 
@@ -59,52 +62,39 @@ export class CockpitComponent implements OnInit {
   }
 
   onSelectFightMode(event) {
-    this.onNewGame();
+    // this.onNewGame();
     this.fightModeSelected = event;
   }
 
   onGetLucky() {
     this.loadingPeople = true;
     this.loadingStarship = true;
-    this.getPeopleResults();
-    this.getStarshipResult();
-  }
+    // this.getPeopleResults();
+    // this.getStarshipResult();
+    this.apiService.getData().subscribe((data: any) => {
 
-  getPeopleResults() {
-    // this.peopleObservable = this.apiService.getPeople();
+      this.peopleData = data[0];
+      this.starshipData = data[1];
 
-    this.apiService.getPeople().subscribe((data: PeopleData) => {
-      if (data) {
-        this.loadingPeople = false;
-        this.person =
-          data["results"][
-            this.randomItem < data["results"].length
-              ? this.randomItem
-              : data["results"].length - 1
-            ];
-      }
+      this.person = this.peopleData["results"][
+        this.randomItem < this.peopleData["results"].length
+          ? this.randomItem
+          : this.peopleData["results"].length - 1
+        ];
+
       // console.log("person", this.person);
-      this.onFight();
+
+      this.starship = this.starshipData["results"][
+        this.randomItem < this.starshipData["results"].length
+          ? this.randomItem
+          : this.starshipData["results"].length - 1
+        ];
+
+      console.log(this.person);
+      console.log(this.starship);
+
     });
-  }
 
-  getStarshipResult() {
-    // this.starshipsObservable = this.apiService.getStarship();
-
-    this.apiService.getStarship().subscribe((data: StarshipData) => {
-      if (data) {
-        this.loadingStarship = false;
-
-        this.starship =
-          data["results"][
-            this.randomItem < data["results"].length
-              ? this.randomItem
-              : data["results"].length - 1
-            ];
-      }
-      // console.log("starship", this.starship);
-      // this.onFight();
-    });
   }
 
   onFight() {
