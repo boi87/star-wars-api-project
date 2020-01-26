@@ -83,6 +83,8 @@ export class CockpitComponent implements OnInit {
 
     this.apiService.getData().subscribe((data: any) => {
 
+      console.log(data);
+
       this.peopleData = data[0];
       this.starshipData = data[1];
 

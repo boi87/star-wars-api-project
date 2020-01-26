@@ -30,4 +30,26 @@ describe('CockpitComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set Mass VS Crew as fightMode', () => {
+    component.onSelectFightMode('Mass VS Crew')
+    expect(component.massVsCrew).toEqual(true);
+    expect(component.heightVsLength).toEqual(false);
+
+  });
+
+  it('should set Height VS length as fightMode', () => {
+    component.onSelectFightMode('Height VS length')
+    expect(component.heightVsLength).toEqual(true);
+    expect(component.massVsCrew).toEqual(false);
+  });
+
+  // it('should set Height VS length as fightMode', () => {
+  //   component.onGetData()
+  //   expect(component.heightVsLength).toEqual(true);
+  //   expect(component.massVsCrew).toEqual(false);
+  // });
+
+
+
 });
