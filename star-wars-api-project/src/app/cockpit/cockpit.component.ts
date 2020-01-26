@@ -49,9 +49,17 @@ export class CockpitComponent implements OnInit {
   onNewGame() {
     this.p1Score = 0;
     this.p2Score = 0;
+
     this.fightModeSelected = null;
+
     this.heightVsLength = false;
     this.massVsCrew = false;
+
+    this.p1Wins = false;
+    this.p2Wins = false;
+
+    this.person = null;
+    this.starship = null;
   }
 
   onSelectFightMode(event) {
