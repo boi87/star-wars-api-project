@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { CockpitComponent } from './cockpit.component';
+import {CockpitComponent} from './cockpit.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -16,9 +16,9 @@ describe('CockpitComponent', () => {
         HttpClientModule,
         HttpClientTestingModule
       ],
-      declarations: [ CockpitComponent ]
+      declarations: [CockpitComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -44,12 +44,15 @@ describe('CockpitComponent', () => {
     expect(component.massVsCrew).toEqual(false);
   });
 
-  // it('should set Height VS length as fightMode', () => {
-  //   component.onGetData()
-  //   expect(component.heightVsLength).toEqual(true);
-  //   expect(component.massVsCrew).toEqual(false);
-  // });
-
-
-
+  it('should reset game stats and reinitiate variables', () => {
+    component.onNewGame();
+    expect(component.p1Score).toEqual(0);
+    expect(component.p2Score).toEqual(0);
+    expect(component.fightModeSelected).toEqual(null);
+    expect(component.heightVsLength).toEqual(false);
+    expect(component.massVsCrew).toEqual(false);
+    expect(component.p1Wins).toEqual(false);
+    expect(component.p2Wins).toEqual(false);
+    expect(component.person).toEqual(null);
+  });
 });
