@@ -7,10 +7,21 @@
 .cards-container {
   display: flex;
   margin-top: 20px;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
-button, .fight-mode-option, .card-title {
+button, .fight-mode-option {
+  font-size: 25px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.card-title, .card-value {
+  font-size: 25px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: bold;
+}
+
+.score, .card-key {
   font-size: 25px;
   font-family: 'Titillium Web', sans-serif;
 }
