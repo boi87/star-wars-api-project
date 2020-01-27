@@ -1,5 +1,21 @@
+.main-container {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .cards-container {
   display: flex;
   margin-top: 20px;
   justify-content: space-around;
+}
+
+button, .fight-mode-option, .card-title {
+  font-size: 25px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.card-container {
+  max-width: 22rem;
+  min-width: 20rem;
 }

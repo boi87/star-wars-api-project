@@ -31,28 +31,47 @@ describe('CockpitComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set Mass VS Crew as fightMode', () => {
+  it('onSelectFightMode() -> should set Mass VS Crew as fightMode', () => {
     component.onSelectFightMode('Mass VS Crew')
     expect(component.massVsCrew).toEqual(true);
     expect(component.heightVsLength).toEqual(false);
 
   });
 
-  it('should set Height VS length as fightMode', () => {
+  it('onSelectFightMode() -> should set Height VS length as fightMode', () => {
     component.onSelectFightMode('Height VS length')
     expect(component.heightVsLength).toEqual(true);
     expect(component.massVsCrew).toEqual(false);
   });
 
-  it('should reset game stats and reinitiate variables', () => {
+  it('onNewGame() -> should reset game stats and reinitiate variables', () => {
     component.onNewGame();
     expect(component.p1Score).toEqual(0);
     expect(component.p2Score).toEqual(0);
+
     expect(component.fightModeSelected).toEqual(null);
+
     expect(component.heightVsLength).toEqual(false);
     expect(component.massVsCrew).toEqual(false);
+
     expect(component.p1Wins).toEqual(false);
     expect(component.p2Wins).toEqual(false);
+
     expect(component.person).toEqual(null);
+    expect(component.starship).toEqual(null);
+  });
+
+  it('onGetData() -> should have called onFight', () => {
+    spyOn(component, 'onFight');
+
+    component.onGetData();
+
+    setTimeout(() => {
+      expect(component.onFight).toHaveBeenCalled();
+    });
+  });
+
+  it('onFight with dummy data', () => {
+
   });
 });
