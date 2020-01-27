@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3745d235-3971-477f-813c-62fe963c4809" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/star-wars-api-project/src/app/cockpit/cockpit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/star-wars-api-project/src/app/cockpit/cockpit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/star-wars-api-project/src/app/services/api.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/star-wars-api-project/src/app/services/api.service.spec.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +72,7 @@
       <workItem from="1579863873053" duration="1162000" />
       <workItem from="1579943228681" duration="6288000" />
       <workItem from="1579961996695" duration="3629000" />
+      <workItem from="1580131940827" duration="1466000" />
     </task>
     <servers />
   </component>
