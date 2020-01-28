@@ -77,6 +77,12 @@ export class CockpitComponent implements OnInit {
     }
 
     this.fightModeSelected = event;
+
+    this.p1Wins = false;
+    this.p2Wins = false;
+
+    this.person = null;
+    this.starship = null;
   }
 
   onGetData() {
