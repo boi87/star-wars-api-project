@@ -66,7 +66,7 @@ describe('CockpitComponent', () => {
     });
   });
 
-  it('onFight with dummy data', () => {
+  xit('onFight with dummy data', () => {
     const person = {
       name: 'Luke Dummy Walker',
       height: '180',
