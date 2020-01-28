@@ -4,6 +4,7 @@ import {CockpitComponent} from './cockpit.component';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {of} from "rxjs";
 
 describe('CockpitComponent', () => {
   let component: CockpitComponent;
@@ -66,7 +67,7 @@ describe('CockpitComponent', () => {
   });
 
   it('onFight with dummy data', () => {
-    component.person = {
+    const person = {
       name: 'Luke Dummy Walker',
       height: '180',
       mass: '70',
@@ -74,7 +75,7 @@ describe('CockpitComponent', () => {
       skin_color: 'white',
       eye_color: 'blue'
     };
-    component.starship = {
+    const starship = {
       name: 'Death Dummy Star',
       model: '180',
       manufacturer: '70',
@@ -82,11 +83,21 @@ describe('CockpitComponent', () => {
       max_atmosphering_speed: '13600',
       crew: '24456'
     };
-    component.heightVsLength = true;
+    const heightVsLength = true;
 
-    spyOn(component, 'onFight')
+    const responseMap = {
+      person: {data: person},
+      starship: {data: starship},
+      heightVsLength: {data: heightVsLength}
+    };
 
-    expect(component.p1Wins).toBe(false);
-    expect(component.p2Wins).toBe(true);
+    const getSpy = jasmine.createSpy('onFight', component.onFight).and.callFake((arg) => {
+      return of(responseMap[arg]);
+    });
+
+    spyOn(component, 'onFight');
+    expect(component.onFight).toHaveBeenCalledWith(responseMap)
+    // expect(component.p1Wins).toBe(false);
+    // expect(component.p2Wins).toBe(true);
   });
 });

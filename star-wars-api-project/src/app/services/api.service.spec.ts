@@ -57,8 +57,7 @@ describe('ApiService', () => {
       constructor(private http: HttpClientModule) {
       }
 
-      getData() {
-      }
+      getData() { }
     }
 
     const getSpy = jasmine.createSpy('Http.get').and.callFake((arg) => {
