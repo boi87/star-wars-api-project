@@ -46,6 +46,7 @@ export class CockpitComponent implements OnInit {
     this.p2Score = 0;
   }
 
+  // set initial value for all variables
   onNewGame() {
     this.p1Score = 0;
     this.p2Score = 0;
@@ -62,9 +63,8 @@ export class CockpitComponent implements OnInit {
     this.starship = null;
   }
 
+  // set FightMode and re-initialize UI
   onSelectFightMode(event) {
-    // this.onNewGame();
-
     switch (event) {
       case 'Mass VS Crew':
         this.massVsCrew = true;
@@ -85,6 +85,7 @@ export class CockpitComponent implements OnInit {
     this.starship = null;
   }
 
+  // call service to run API calls and return them simultaneously
   onGetData() {
     this.person = null;
     this.starship = null;
@@ -97,7 +98,7 @@ export class CockpitComponent implements OnInit {
 
     this.apiService.getData().subscribe((data: any) => {
 
-      console.log(data);
+      // console.log(data);
 
       this.peopleData = data[0];
       this.starshipData = data[1];
@@ -105,8 +106,6 @@ export class CockpitComponent implements OnInit {
       this.person = this.peopleData.results[
         Math.floor(Math.random() * this.peopleData.results.length)
         ];
-
-      // console.log("person", this.person);
 
       this.starship = this.starshipData.results[
         Math.floor(Math.random() * this.starshipData.results.length)
@@ -117,16 +116,13 @@ export class CockpitComponent implements OnInit {
 
   }
 
+  // calculate winner based on different fight modes
   onFight() {
 
     if ((this.massVsCrew)) {
       if (this.person.mass === 'unknown' || this.starship.crew === 'unknown') {
-        console.log('UNK');
         this.onGetData();
       } else {
-
-        // console.log(this.person.mass);
-        // console.log(this.starship.crew);
         if (+this.person.mass > +this.starship.crew) {
           this.p1Wins = true;
           this.p1Score += 1;
@@ -137,13 +133,9 @@ export class CockpitComponent implements OnInit {
       }
     } else {
       if (this.person.height === 'unknown' || this.starship.length === 'unknown') {
-        console.log('UNK');
         this.onGetData();
       } else {
-        // console.log(this.person.height);
-        // console.log(this.starship.length);
         if (+this.person.height > +this.starship.length) {
-          console.log(+this.person.height > +this.starship.length);
           this.p1Wins = true;
           this.p1Score += 1;
         } else {
